@@ -1,18 +1,15 @@
-double myPow(double x, int n) {
+double myPow(double x,int n){
     long long N=n;
     if(N<0){
-        x=1/x;
         N=-N;
+        x=1/x;
     }
-    double sum=1;
-    while (N > 0) {
-        if (N % 2 == 1) {
-            sum *= x;
-        }
-        x *= x;
-        N /= 2;
-    }
+    if(N==0) return 1;
 
-    
-    return sum;    
+    double half=myPow(x,N/2);
+
+    if(N%2==0)
+        return half*half;
+    else 
+        return x*half*half;
 }
